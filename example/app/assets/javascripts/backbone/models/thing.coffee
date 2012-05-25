@@ -1,0 +1,1 @@
+class Example.Models.Thing extends Backbone.Model

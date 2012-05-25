@@ -1,0 +1,10 @@
+.modal-header
+  %button{class: "close"} x
+  %h3 New Person
+%form.person-form
+  .modal-body
+    = @textField(field: "first_name", label: "First Name")
+    = @textField(field: "last_name", label: "Last Name")
+  .modal-footer
+    %input{type: "submit", value: "Save"}
+    

@@ -1,0 +1,6 @@
+%ul
+  - for person in @collection.models
+    %li
+      %a{href: '/people/#{person.id}'}= person.get("first_name")
+      
+%a{href: "#people/new"} Add Person
