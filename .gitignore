@@ -2,3 +2,9 @@
 .bundle
 Gemfile.lock
 pkg/*
+.redcar
+vendor/ruby
+bin
+example/vendor/ruby
+.DS_Store
+.rvmrc
