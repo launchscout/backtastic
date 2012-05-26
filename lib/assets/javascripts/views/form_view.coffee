@@ -22,6 +22,15 @@ class Backtastic.Views.FormView extends Backtastic.View
       model: @model
     "<div data-field='#{options.field}'></div>"
     
+  selectField: (options) ->
+    @fieldViews[options.field] = new Backtastic.Views.SelectFieldView
+      parentView: @
+      field: options.field
+      label: options.label
+      model: @model
+      collection: options.collection
+    "<div data-field='#{options.field}'></div>"
+
   save: (event)->
     @$("input[type='submit']").attr("disabled", "disabled")
     @clearErrors()

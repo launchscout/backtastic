@@ -1,4 +1,6 @@
 Example::Application.routes.draw do
+  resources :occupations
+
   resources :people
 
   # The priority is based upon order of creation:

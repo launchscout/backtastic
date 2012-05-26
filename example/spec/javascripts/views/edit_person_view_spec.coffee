@@ -2,10 +2,18 @@ describe "EditPersonView", ->
   beforeEach ->
     setFixtures("<div id='edit_person'></div>")
     @person = new Example.Models.Person
+    @occupations = new Example.Collections.OccupationsCollection [
+      {id: 1, name: "Doctor"}
+      {id: 1, name: "Lawyer"}
+    ]
     @editPersonView = new Example.Views.EditPersonView
       el: $("#edit_person")
       model: @person
+      occupations: @occupations
     @editPersonView.render()
+  it "renders fields", ->
+    expect(@editPersonView.$("input[name='first_name']")).toExist()
+    expect(@editPersonView.$("select[name='occupation_id']")).toExist()
   describe "saving", ->
     beforeEach ->
       jasmine.Ajax.useMock()

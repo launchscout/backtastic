@@ -3,8 +3,10 @@
   %h3 New Person
 %form.person-form
   .modal-body
-    = @textField(field: "first_name", label: "First Name")
-    = @textField(field: "last_name", label: "Last Name")
+    %fieldset
+      = @textField(field: "first_name", label: "First Name")
+      = @textField(field: "last_name", label: "Last Name")
+      = @selectField(field: "occupation_id", label: "Occupation", collection: @occupations)
   .modal-footer
-    %input{type: "submit", value: "Save"}
+    %input{type: "submit", value: "Save", class: "btn btn-primary"}
     

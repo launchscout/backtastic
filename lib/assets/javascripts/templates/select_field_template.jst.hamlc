@@ -1,0 +1,4 @@
+%label{for: @field}= @label
+%select{name: @field}
+  - for model in @collection.models
+    %option{value: model.id}= model.get("name")

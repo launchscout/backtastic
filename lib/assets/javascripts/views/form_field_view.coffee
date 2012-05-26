@@ -11,6 +11,10 @@ class Backtastic.Views.FormFieldView extends Backtastic.View
     @setElement(@parentView.$("[data-field=#{@field}]"))
     @render()
     
+  render: ->
+    super
+    @$el.addClass "control-group"
+    
   displayErrors: (messages) ->
     @$el.addClass "error"
     @$el.append "<span class='help-inline'>#{message}</span>" for message in messages
