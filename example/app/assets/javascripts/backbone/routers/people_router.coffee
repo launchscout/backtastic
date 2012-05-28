@@ -11,6 +11,7 @@ class Example.Routers.PeopleRouter extends Backbone.Router
   routes:
     "people/new": "newPerson"
     "people/list": "showPeople"
+    "people/:id/edit": "editPerson"
     
   showPeople: ->
     @peopleView.render()
@@ -20,4 +21,7 @@ class Example.Routers.PeopleRouter extends Backbone.Router
     person = new Example.Models.Person
     @people.add person, silent: true
     @editPersonView.edit(person)
+  
+  editPerson: (id)->
+    @editPersonView.edit @people.get(id)
     
