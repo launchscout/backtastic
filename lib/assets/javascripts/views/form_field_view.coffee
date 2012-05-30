@@ -8,7 +8,7 @@ class Backtastic.Views.FormFieldView extends Backtastic.View
     @parentView.on "rendered", => @afterParentRender()
   
   afterParentRender: ->
-    @setElement(@parentView.$("[data-field=#{@field}]"))
+    @setElement(@parentView.$("[data-view-id=#{@cid}]"))
     @render()
     
   render: ->

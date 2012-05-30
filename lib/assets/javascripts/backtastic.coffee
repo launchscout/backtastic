@@ -1,6 +1,7 @@
 #= require hamlcoffee
 #= require inflection
 #= require jquery.serializeObject
+#= require bootstrap-datepicker
 #= require_self
 #= require_tree .
 

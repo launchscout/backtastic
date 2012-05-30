@@ -36,4 +36,4 @@ describe "EditPersonView", ->
       it "should reenable the button", ->
         expect(@editPersonView.$("input[type='submit']").attr("disabled")).toBeFalsy()
       it "should display the error message", ->
-        expect(@editPersonView.$("div[data-field=first_name]")).toHaveText /cannot be Bob/
+        expect(@editPersonView.$el).toHaveText /cannot be Bob/

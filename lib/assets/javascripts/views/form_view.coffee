@@ -13,30 +13,26 @@ class Backtastic.Views.FormView extends Backtastic.View
     errors = errors.errors if errors.errors #rails does it this way
     for field, errorMessages of errors
       @fieldViews[field]?.displayErrors(errorMessages)
-      
-  textField: (options) ->
-    @fieldViews[options.field] = new Backtastic.Views.TextFieldView
+  
+  fieldView: (fieldViewClass, options) ->
+    fieldView = new fieldViewClass _.extend options, 
       parentView: @
-      field: options.field
-      label: options.label
       model: @model
-    "<div data-field='#{options.field}'></div>"
+    @fieldViews[options.field] = fieldView
+    fieldView.toHtml()
+    
+  dateField: (options) ->
+    @fieldView(Backtastic.Views.DateFieldView, options)
+    
+  textField: (options) ->
+    @fieldView(Backtastic.Views.TextFieldView, options)
     
   selectField: (options) ->
-    @fieldViews[options.field] = new Backtastic.Views.SelectFieldView
-      parentView: @
-      field: options.field
-      label: options.label
-      model: @model
-      collection: options.collection
-    "<div data-field='#{options.field}'></div>"
-
+    @fieldView(Backtastic.Views.SelectFieldView, options)
+    
   save: (event)->
     @$("input[type='submit']").attr("disabled", "disabled")
     @clearErrors()
     event.preventDefault()
     @model.on "error",  (model, response) => @displayErrors(response)
     @model.save @$("form").serializeObject()
-    
-  afterSave: ->
-    @$el.modal("hide")
