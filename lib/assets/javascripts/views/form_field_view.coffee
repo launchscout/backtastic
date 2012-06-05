@@ -6,6 +6,7 @@ class Backtastic.Views.FormFieldView extends Backtastic.View
     @label = options.label
     @parentView = options.parentView
     @parentView.on "rendered", => @afterParentRender()
+    @model.on "error", (model, errors) => @displayErrors(errors) 
   
   afterParentRender: ->
     @setElement(@parentView.$("[data-view-id=#{@cid}]"))
@@ -15,9 +16,12 @@ class Backtastic.Views.FormFieldView extends Backtastic.View
     super
     @$el.addClass "control-group"
     
-  displayErrors: (messages) ->
-    @$el.addClass "error"
-    @$el.append "<span class='help-inline'>#{message}</span>" for message in messages
+  displayErrors: (errors) ->
+    errors = errors.errors if errors.errors
+    if errors?[@field]
+      messages = errors[@field]
+      @$el.addClass "error"
+      @$el.append "<span class='help-inline'>#{message}</span>" for message in messages
   
   clearErrors: ->
     @$el.removeClass "error"
