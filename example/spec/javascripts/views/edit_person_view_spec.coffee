@@ -27,7 +27,7 @@ describe "EditPersonView", ->
       beforeEach ->
         @request.response
           status: 422
-          contentType: "application/json"
+          contentType: "application/json; charset=utf-8"
           responseText: JSON.stringify
             errors:
               first_name: ["cannot be Bob"]

@@ -2,6 +2,7 @@
 #= require inflection
 #= require jquery.serializeObject
 #= require bootstrap-datepicker
+#= require backbone_wrap_errors
 #= require_self
 #= require_tree .
 
