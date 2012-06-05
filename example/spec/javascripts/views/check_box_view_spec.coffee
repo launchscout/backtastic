@@ -12,3 +12,7 @@ describe "check box view", ->
     
   it "renders a check box input", ->
     expect(@checkBoxFieldView.$("input[type=checkbox]")).toExist()
+    
+  it "renders a checked check box if the value is true", ->
+    expect(@checkBoxFieldView.$("input[type=checkbox]").attr("checked")).toEqual("checked")
+    

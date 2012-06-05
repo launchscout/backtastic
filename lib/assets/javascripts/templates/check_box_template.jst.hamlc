@@ -1,2 +1,2 @@
 %label{for: @field}= @label
-%input{type: "checkbox", name: @field, value: @model.get(@field)}
+%input{type: "checkbox", name: @field}
