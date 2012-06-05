@@ -14,6 +14,7 @@ describe "EditPersonView", ->
   it "renders fields", ->
     expect(@editPersonView.$("input[name='first_name']")).toExist()
     expect(@editPersonView.$("select[name='occupation_id']")).toExist()
+    expect(@editPersonView.$("input[name='evil'][type=checkbox]")).toExist()
   describe "saving", ->
     beforeEach ->
       jasmine.Ajax.useMock()

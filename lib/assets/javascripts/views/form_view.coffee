@@ -5,7 +5,7 @@ class Backtastic.Views.FormView extends Backtastic.View
     @fieldViews = {}
       
   fieldView: (fieldViewClass, options) ->
-    fieldView = new fieldViewClass _.extend options, 
+    fieldView = new fieldViewClass _.extend options,
       parentView: @
       model: @model
     @fieldViews[options.field] = fieldView
@@ -16,6 +16,9 @@ class Backtastic.Views.FormView extends Backtastic.View
     
   textField: (options) ->
     @fieldView(Backtastic.Views.TextFieldView, options)
+
+  checkBoxField: (options) ->
+    @fieldView(Backtastic.Views.CheckBoxView, options)
     
   selectField: (options) ->
     @fieldView(Backtastic.Views.SelectFieldView, options)

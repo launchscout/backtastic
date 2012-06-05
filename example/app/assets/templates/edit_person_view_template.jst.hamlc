@@ -6,6 +6,7 @@
     %fieldset
       = @textField(field: "first_name", label: "First Name")
       = @textField(field: "last_name", label: "Last Name")
+      = @checkBoxField(field: "evil", label: "Evil")
       = @dateField(field: "birth_date", label: "Birth Date", format: "yyyy-mm-dd")
       = @selectField(field: "occupation_id", label: "Occupation", collection: @occupations)
   .modal-footer
