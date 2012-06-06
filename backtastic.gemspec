@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # specify any dependencies here; for example:
-  # s.add_development_dependency "rspec"
+  s.add_development_dependency "rspec"
   s.add_runtime_dependency "haml_coffee_assets"
   s.add_runtime_dependency "rails-backbone"
   s.add_runtime_dependency "inflection-js-rails"

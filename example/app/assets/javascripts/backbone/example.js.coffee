@@ -3,6 +3,7 @@
 #= require_tree ./models
 #= require_tree ./views
 #= require_tree ./routers
+#= require ./rails_metadata
 
 window.Example =
   Models: {}

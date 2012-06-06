@@ -18,7 +18,7 @@ group :assets do
   
   gem "haml_coffee_assets"
   gem "jasmine-ajax"
-  gem "jasminerice-runner"  
+  gem "jasminerice-runner"
   gem "backtastic", :path => ".."
   gem 'uglifier', '>= 1.0.3'
 end
@@ -26,6 +26,9 @@ end
 gem 'jquery-rails'
 gem "jasminerice"
 gem "capybara-webkit"
+
+gem "rspec-rails"
+gem "rspec-given"
 
 gem "inherited_resources"
 # To use ActiveModel has_secure_password
