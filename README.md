@@ -6,10 +6,9 @@ Think formtastic meets backbone with some twitter bootstrap goodness.
 At Gaslight we've built several rails apps with backbone and one of the more common complaints from new developers to this stuff is the lack of form helpery goodness that rails gives you.  This is our attempt to start filling this gap.  Most of the action right now happens in `Backtastic.Views.FormView`.  This view is designed to be as a superclass within your application and give you several bits of goodness:
 
 * helpers to generate a form fields with twitter bootstrap compatible markup. So far textField, selectField, dateField
-* save implementation which does the following
-  * settings attributes for each form field on the model
-  * saves the model and listens for errors
-  * parses validation errors from rails and displays errors on individual fields
+* default save implementation that updates the model from the form and persists
+* handling validation errors from rails and displaying errors on individual fields
+* composite views
 
 Usage
 -----
@@ -32,6 +31,13 @@ Backtastic provides a render method that will invoke your template with the view
 
     %form
       = @textField(label: "Name", field: "Name")
+      
+The field helper method (`@textField()` in this example) creates a subview of the appropriate type which renders a label and form input using twitter bootstrap friendly markup.  They also listen to the model for validation errors and display appropriate styling and error messages.
+
+Validation
+----------
+
+Rails validation on the server side will be handled appropriately by the form element views. You can also add client side validation. So far we support presence and format, checkout the Person backbone model in the example app to see how it works. We'll be adding support for reflecting on the rails model adding client side validations to the backbone model "real soon now".
       
 Example App
 -----------
@@ -58,7 +64,6 @@ I'd like to have some metadata generated form rails and available to backbone so
 
     @form fields["first_name", "last_name"]
     
-Also, it seems like making client side validation happen when appropriate would be nice.  And I'd like to refactor the way FormView deals with rails validation errors, sooner rather than later probably.
 
 Shameless self-promotion
 ------------------------

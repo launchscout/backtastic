@@ -4,7 +4,7 @@ class Example.Views.EditPersonView extends Backtastic.Views.FormView
   constructor: (options)->
     super
     @occupations = options.occupations
-    
+      
   events:
     "submit form": "save"
     

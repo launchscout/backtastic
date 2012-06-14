@@ -6,6 +6,5 @@ Backbone.wrapError = (onError, originalModel, options) ->
     else
       resp
     if (onError)
-      onError(originalModel, errors, resp, options);
-    else
-      originalModel.trigger('error', originalModel, errors, resp, options);
+      onError(originalModel, errors, resp, options)
+    originalModel.trigger('error', originalModel, errors, resp, options)

@@ -21,8 +21,11 @@ Gem::Specification.new do |s|
 
   # specify any dependencies here; for example:
   s.add_development_dependency "rspec"
+  s.add_development_dependency "pry"
+  
   s.add_runtime_dependency "haml_coffee_assets"
   s.add_runtime_dependency "rails-backbone"
   s.add_runtime_dependency "inflection-js-rails"
   s.add_runtime_dependency "twitter-bootstrap-rails"
+  s.add_runtime_dependency "activesupport"
 end

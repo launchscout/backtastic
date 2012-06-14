@@ -4,6 +4,7 @@
 #= require bootstrap-datepicker
 #= require backbone_wrap_errors
 #= require_self
+#= require_directory ./util
 #= require_tree .
 
 window.Backtastic = {

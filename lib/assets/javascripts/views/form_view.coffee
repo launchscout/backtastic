@@ -1,30 +1,11 @@
+#= require ./form_helpers
 class Backtastic.Views.FormView extends Backtastic.View
-  
-  constructor: ->
-    super
-    @fieldViews = {}
       
-  fieldView: (fieldViewClass, options) ->
-    fieldView = new fieldViewClass _.extend options,
-      parentView: @
-      model: @model
-    @fieldViews[options.field] = fieldView
-    fieldView.toHtml()
-    
-  dateField: (options) ->
-    @fieldView(Backtastic.Views.DateFieldView, options)
-    
-  textField: (options) ->
-    @fieldView(Backtastic.Views.TextFieldView, options)
-
-  checkBoxField: (options) ->
-    @fieldView(Backtastic.Views.CheckBoxView, options)
-    
-  selectField: (options) ->
-    @fieldView(Backtastic.Views.SelectFieldView, options)
-    
   save: (event)->
-    @$("input[type='submit']").attr("disabled", "disabled")
     event.preventDefault()
-    @model.on "error",  (model, errors) => @$("input[type='submit']").removeAttr("disabled")
-    @model.save @$("form").serializeObject()
+    if @model.set @$("form").serializeObject()
+      @$("input[type='submit']").attr("disabled", "disabled")
+      @model.save {},
+        error: => @$("input[type='submit']").removeAttr("disabled")
+        
+Backtastic.include Backtastic.Views.FormView, Backtastic.Views.FormHelpers
