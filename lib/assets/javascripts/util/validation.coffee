@@ -27,13 +27,16 @@ Backtastic.Validation =
     
   clearErrors: -> @errors = {}
   
+  validateAttribute: (attribute, value) ->
+    return unless @constructor.validations[attribute]
+    for validator in @constructor.validations[attribute]
+      error = validator(attribute, value)
+      @addError(attribute, error) if error
+      
   validate: (attributes) ->
     @clearErrors()
     return unless @constructor.validations
-    for attr, validators of @constructor.validations
-      for validator in validators
-        error = validator(attr, attributes[attr])
-        @addError(attr, error) if error
+    @validateAttribute(attr, value) for attr, value of attributes
     @errors if _.keys(@errors).length > 0
     
 Backtastic.include Backbone.Model, Backtastic.Validation
