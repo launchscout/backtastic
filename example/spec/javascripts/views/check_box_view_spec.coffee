@@ -24,4 +24,21 @@ describe "check box view", ->
       @checkBoxFieldView.render()
     it "render an unchecked check box if the value is false", ->
       expect(@checkBoxFieldView.$("input[type=checkbox]").attr("checked")).toBeFalsy()
+      
+  describe "updating model", ->
+    describe "when checking", ->
+      beforeEach ->
+        @checkBoxFieldView.render()
+        @checkBoxFieldView.$("input").attr("checked", true)
+        @checkBoxFieldView.updateModel()
+      it "should update the model", ->
+        expect(@model.get("awesome")).toBeTruthy()
+    describe "when unchecking", ->
+      beforeEach ->
+        @model.set awesome: true
+        @checkBoxFieldView.render()
+        @checkBoxFieldView.$("input").attr("checked", false)
+        @checkBoxFieldView.updateModel()
+      it "should update the model", ->
+        expect(@model.get("awesome")).toBeFalsy()
 

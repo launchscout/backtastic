@@ -26,3 +26,9 @@ describe "select field view", ->
   it "puts a label on it", ->
     expect(@selectFieldView.$("label[for=occupation_id]")).toExist()
     expect(@selectFieldView.$("label[for=occupation_id]")).toHaveText /Occupation/
+  describe "updating model", ->
+    beforeEach ->
+      @selectFieldView.$("select").val("1")
+      @selectFieldView.updateModel()
+    it "updates the model", ->
+      expect(@person.get("occupation_id")).toEqual "1"

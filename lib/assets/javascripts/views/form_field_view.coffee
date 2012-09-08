@@ -8,6 +8,12 @@ class Backtastic.Views.FormFieldView extends Backtastic.View
     @parentView.on "rendered", => @afterParentRender()
     @model.on "error", (model, errors) => @displayErrors(errors)
   
+  events:
+    "blur input": "updateModel"
+    
+  updateModel: ->
+    @model.set @field, @$("input").val()
+    
   afterParentRender: ->
     @setElement(@parentView.$("[data-view-id=#{@cid}]"))
     @render()

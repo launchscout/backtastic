@@ -6,3 +6,6 @@ class Backtastic.Views.CheckBoxView extends Backtastic.Views.FormFieldView
   render: ->
     super
     @$('input').prop("checked", "checked") if @model.get(@field)
+    
+  updateModel: ->
+    @model.set @field, @$("input").attr("checked") == "checked"

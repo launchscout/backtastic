@@ -5,4 +5,7 @@ class Backtastic.Views.SelectFieldView extends Backtastic.Views.FormFieldView
   render: ->
     super
     @$("select").val @model.get(@field)
+    
+  updateModel: ->
+    @model.set @field, @$("select").val()
   

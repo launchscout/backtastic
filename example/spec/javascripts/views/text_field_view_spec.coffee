@@ -16,6 +16,12 @@ describe "text field view", ->
     expect(@textFieldView.$("label[for=name]")).toExist()
     expect(@textFieldView.$("label[for=name]")).toHaveText /Name/
     
+  describe "updating model", ->
+    beforeEach ->
+      @textFieldView.$("input").val("Not bob")
+      @textFieldView.updateModel()
+    it "should update the model", ->
+      expect(@model.get("name")).toEqual "Not bob"
   describe "displaying errors", ->
     beforeEach ->
       @textFieldView.displayErrors
