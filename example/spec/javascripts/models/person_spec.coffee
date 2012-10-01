@@ -8,25 +8,24 @@ describe "Person", ->
         @validationErrors = errors
     describe "failing validation", ->
       beforeEach ->
-        @person.set first_name: "", last_name: "NotJones"
+        @person.set first_name: "", last_name: "NotSmith"
       it "should have triggered the error event for first name", ->
         expect(@validationErrors.first_name.length).toEqual 1
       it "should have triggered the error event for last name", ->
         expect(@validationErrors.last_name.length).toEqual 1
     describe "with only one attribute", ->
       beforeEach ->
-        @person.set last_name: "Jones"
+        @person.set last_name: "Smith"
       it "should only validate attributes that being set", ->
         expect(@person.isValid()).toBeTruthy()
       it "should have set the last name", ->
-        expect(@person.get("last_name")).toEqual "Jones"
+        expect(@person.get("last_name")).toEqual "Smith"
     describe "with valid attributes", ->
       beforeEach ->
-        @person.set first_name: "Fred", last_name: "Jones"
+        @person.set first_name: "Fred", last_name: "Smith"
       it "should be valid", ->
         expect(@person.isValid()).toTruthy
       it "should have no errors", ->
         expect(@validationErrors.first_name?).toBeFalsy()
-    
-      
-    
+
+
