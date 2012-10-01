@@ -7,12 +7,24 @@ require "active_support/inflections"
 module Backtastic
   class BacktasticEngine < Rails::Engine
   end
-  
-  def self.schema_for(model)
-    schema = {}
-    model.to_s.constantize.columns.each do |col|
-      schema[col.name] = {"type" => col.type }
+
+  def self.validations_for(model)
+    validations = {}
+  	model.validators.each do |validator|
+      attribute = validator.attributes.first
+      validator_type = validator.class.to_s.gsub(/^ActiveModel::Validations::/, "").gsub(/Validator$/, "").downcase
+      validations[attribute] ||= {}
+      validations[attribute][validator_type] = options_from(validator)
     end
-    schema
+    validations
   end
+
+  def self.options_from(validator)
+    options = validator.options.dup
+    options.each do |option, value|
+      options[option] = value.is_a?(Regexp) ? value.inspect : value
+    end
+    options
+  end
+
 end

@@ -3,7 +3,9 @@ class Example.Routers.PeopleRouter extends Backbone.Router
     super
     @people = new Example.Collections.PeopleCollection(peopleJson)
     @occupations = new Example.Collections.OccupationsCollection(occupationsJson)
-    @people.on "sync", => @navigate "people/list", trigger: true
+    @people.on "sync", @showPeople, @
+    @people.off null, null, @
+    => @navigate "people/list", trigger: true
     @peopleView = new Example.Views.PeopleView(collection: @people, el: $("#people_view"))
     @editPersonView = new Example.Views.EditPersonView(el: $("#edit_person"), occupations: @occupations)
     @showPeople()
