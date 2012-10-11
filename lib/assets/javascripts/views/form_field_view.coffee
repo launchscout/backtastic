@@ -1,5 +1,5 @@
 class Backtastic.Views.FormFieldView extends Backtastic.View
-  
+
   constructor: (options)->
     super
     @field = options.field
@@ -7,21 +7,23 @@ class Backtastic.Views.FormFieldView extends Backtastic.View
     @parentView = options.parentView
     @parentView.on "rendered", => @afterParentRender()
     @model.on "error", (model, errors) => @displayErrors(errors)
-  
+    @model.on "change:#{@field}", @clearErrors, @
+
   events:
     "blur input": "updateModel"
-    
+    "keyup input": "updateModel"
+
   updateModel: ->
     @model.set @field, @$("input").val()
-    
+
   afterParentRender: ->
     @setElement(@parentView.$("[data-view-id=#{@cid}]"))
     @render()
-    
+
   render: ->
     super
     @$el.addClass "control-group"
-    
+
   displayErrors: (errors) ->
     errors = errors.errors if errors.errors
     if errors?[@field]
@@ -29,6 +31,8 @@ class Backtastic.Views.FormFieldView extends Backtastic.View
       @$el.addClass "error"
       @$("span.help-inline").remove()
       @$el.append "<span class='help-inline'>#{message}</span>" for message in messages
-  
+
   clearErrors: ->
     @$el.removeClass "error"
+    @$("span.help-inline").remove()
+

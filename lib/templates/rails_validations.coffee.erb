@@ -4,6 +4,3 @@ Backtastic.Rails =
 <% ActiveRecord::Base.descendants.each do |model| %>
 Backtastic.Rails.validations.<%= model %> = <%= Backtastic.validations_for(model).to_json %>
 <% end %>
-
-Backtastic.Rails.applyValidations = (models) ->
-  model.validate(Backtastic.Rails.validations[name]) for name, model of models

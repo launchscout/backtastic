@@ -49,3 +49,6 @@ Backtastic.Validation =
     @errors if _.keys(@errors).length > 0
 
 Backtastic.include Backbone.Model, Backtastic.Validation
+
+Backtastic.applyValidations = (models, validations) ->
+  model.validate(validations[name]) for name, model of models

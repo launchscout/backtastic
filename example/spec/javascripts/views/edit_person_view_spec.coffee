@@ -19,7 +19,7 @@ describe "EditPersonView", ->
     beforeEach ->
       jasmine.Ajax.useMock()
       @editPersonView.$("input[name='first_name']").val("Bob")
-      @editPersonView.$("input[name='last_name']").val("Smith")
+      @editPersonView.$("input[name='last_name']").val("Jones")
       @editPersonView.save(new jQuery.Event)
       @request = mostRecentAjaxRequest()
     it "disables the save button", ->

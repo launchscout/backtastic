@@ -15,7 +15,7 @@ describe "text field view", ->
   it "puts a label on it", ->
     expect(@textFieldView.$("label[for=name]")).toExist()
     expect(@textFieldView.$("label[for=name]")).toHaveText /Name/
-    
+
   describe "updating model", ->
     beforeEach ->
       @textFieldView.$("input").val("Not bob")
@@ -30,11 +30,19 @@ describe "text field view", ->
       expect(@textFieldView.$el).toHaveClass "error"
     it "should add the error message", ->
       expect(@textFieldView.$("span.help-inline")).toHaveText "totally borked"
+    describe "and then setting model attribute to something valid", ->
+      beforeEach ->
+        @model.set name: "Wut"
+      it "should remove error class", ->
+        expect(@textFieldView.$el).not.toHaveClass "error"
+      it "should remove the error message", ->
+        expect(@textFieldView.$("span.help-inline")).not.toExist()
+
     describe "again", ->
       beforeEach ->
         @textFieldView.displayErrors
           name: ["totally borked"]
       it "should only display it once", ->
         expect(@textFieldView.$("span.help-inline").size()).toEqual 1
-        
-      
+
+

@@ -14,4 +14,4 @@ window.Example =
 $ ->
   new Example.Routers.PeopleRouter()
   Backbone.history.start()
-  Backtastic.Rails.applyValidations(Example.Models)
+  Backtastic.applyValidations(Example.Models, Backtastic.Rails.validations)
