@@ -4,26 +4,24 @@ class Example.Routers.PeopleRouter extends Backbone.Router
     @people = new Example.Collections.PeopleCollection(peopleJson)
     @occupations = new Example.Collections.OccupationsCollection(occupationsJson)
     @people.on "sync", @showPeople, @
-    @people.off null, null, @
-    => @navigate "people/list", trigger: true
+    @people.on "add", @showPeople, @
     @peopleView = new Example.Views.PeopleView(collection: @people, el: $("#people_view"))
     @editPersonView = new Example.Views.EditPersonView(el: $("#edit_person"), occupations: @occupations)
     @showPeople()
-    
+
   routes:
     "people/new": "newPerson"
     "people/list": "showPeople"
     "people/:id/edit": "editPerson"
-    
+
   showPeople: ->
     @peopleView.render()
     @editPersonView.close()
-    
+
   newPerson: ->
     person = new Example.Models.Person
-    @people.add person, silent: true
+    person.on "sync", => @people.add(person)
     @editPersonView.edit(person)
-  
+
   editPerson: (id)->
     @editPersonView.edit @people.get(id)
-    
