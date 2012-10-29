@@ -72,6 +72,10 @@ Shameless self-promotion
 
 If in-person training in all this is something that could help you or someone you know, we've [got you covered](http://training.gaslightsoftware.com).  Should you need help building a backbone rails app, we can [do that too](http://gaslightsoftware.com).
 
+License
+-------
+
+The MIT License - Copyright (c) Gaslight Software
 
 
 
