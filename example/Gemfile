@@ -15,7 +15,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
-  
+
   gem "haml_coffee_assets"
   gem "jasmine-ajax"
   gem "jasminerice-runner"
@@ -31,8 +31,10 @@ gem 'jquery-rails'
 gem "jasminerice"
 gem "capybara-webkit"
 
-gem "rspec-rails"
-gem "rspec-given"
+group :test do
+  gem "rspec-rails"
+  gem "rspec-given"
+end
 
 gem "inherited_resources"
 # To use ActiveModel has_secure_password
