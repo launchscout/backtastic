@@ -1,13 +1,19 @@
 Backtastic.Validators =
 
   presence: (options) ->
-    (field, value) -> "is required" unless value?.length > 0
+    message = options.message || "is required"
+    (field, value) -> message unless value?.length > 0
 
   format: (options) ->
+    message = options.message || "must match specified format"
     toRegExp = (str) ->
       new RegExp(str.replace(/^\//, "").replace(/\/$/, ""))
     pattern = if _.isRegExp(options?.with) then options?.with else toRegExp(options?.with)
-    (field, value) -> "must match specified format." unless value?.match(pattern)
+    (field, value) -> message unless value?.match(pattern) or (options.allow_blank and _.isEmpty(value))
+
+  length: (options) ->
+    message = options.message || "must be between #{options.minimum} and #{options.maximum} characters"
+    (field, value) -> message unless Number(options.minimum) <= value.length <= Number(options.maximum)
 
 Backtastic.Validation =
 
@@ -16,7 +22,8 @@ Backtastic.Validation =
     addValidator: (validator, field, options) ->
       @validations or = {}
       @validations[field] or= []
-      @validations[field].push Backtastic.Validators[validator]?(options)
+      validator = Backtastic.Validators[validator]?(options)
+      @validations[field].push validator if validator
 
     validatePresenceOf: (field) ->
       @addValidator("presence", field)
