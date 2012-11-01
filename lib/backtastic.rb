@@ -12,7 +12,7 @@ module Backtastic
     validations = {}
   	model.validators.each do |validator|
       attribute = validator.attributes.first
-      validator_type = validator.class.to_s.gsub(/^ActiveModel::Validations::/, "").gsub(/Validator$/, "").downcase
+      validator_type = validator.class.to_s.gsub(/^Active.*::Validations::/, "").gsub(/Validator$/, "").downcase
       validations[attribute] ||= {}
       validations[attribute][validator_type] = options_from(validator)
     end
