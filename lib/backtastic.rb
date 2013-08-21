@@ -1,5 +1,5 @@
 require "backtastic/version"
-require 'rails-backbone'
+require 'backbone-on-rails'
 require "inflection-js-rails"
 require "twitter-bootstrap-rails"
 require "active_support/inflections"
