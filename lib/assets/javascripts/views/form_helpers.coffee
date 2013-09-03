@@ -5,14 +5,14 @@ Backtastic.Views.FormHelpers =
       model: @model
     fieldView.toHtml()
     
-  dateField: (options) ->
-    @fieldView(Backtastic.Views.DateFieldView, options)
+  date: (options) ->
+    @fieldView(Backtastic.Views.DateView, options)
     
   textField: (options) ->
     @fieldView(Backtastic.Views.TextFieldView, options)
 
-  checkBoxField: (options) ->
+  checkBox: (options) ->
     @fieldView(Backtastic.Views.CheckBoxView, options)
     
-  selectField: (options) ->
-    @fieldView(Backtastic.Views.SelectFieldView, options)
+  select: (options) ->
+    @fieldView(Backtastic.Views.SelectView, options)
