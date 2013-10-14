@@ -4,7 +4,7 @@ class Backtastic.View extends Backbone.View
     "data-view-id": @cid
   
   toHtml: ->
-    @$el.clone().wrap("<p>").parent().html()
+    @el.outerHTML
     
   render: ->
     @trigger("beforeRender")
