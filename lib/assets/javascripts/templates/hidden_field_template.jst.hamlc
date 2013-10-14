@@ -1,0 +1,1 @@
+%input{name: @field, value: @model.get(@field), type: 'hidden'}
