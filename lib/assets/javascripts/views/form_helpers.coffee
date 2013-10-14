@@ -13,6 +13,21 @@ Backtastic.Views.FormHelpers =
 
   checkBoxField: (options) ->
     @fieldView(Backtastic.Views.CheckBoxView, options)
+
+  hiddenField: (options) ->
+    @fieldView(Backtastic.Views.HiddenFieldView, options)
+
+  passwordField: (options) ->
+    @fieldView(Backtastic.Views.PasswordFieldView, options)
+
+  textArea: (options) ->
+    @fieldView(Backtastic.Views.TextAreaView, options)
+
+  radioButton: (options) ->
+    @fieldView(Backtastic.Views.RadioButtonView, options)
+
+  submit: (options) ->
+    @fieldView(Backtastic.Views.SubmitButtonView, options)
     
   selectField: (options) ->
     @fieldView(Backtastic.Views.SelectFieldView, options)
