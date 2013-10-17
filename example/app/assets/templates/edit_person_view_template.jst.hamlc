@@ -7,8 +7,8 @@
       = @textField(field: "first_name", label: "First Name")
       = @textField(field: "last_name", label: "Last Name")
       = @textField(field: "phone", label: "Phone")
-      = @checkBoxField(field: "evil", label: "Evil")
-      = @dateField(field: "birth_date", label: "Birth Date", format: "yyyy-mm-dd")
-      = @selectField(field: "occupation_id", label: "Occupation", collection: @occupations)
+      = @checkBox(field: "evil", label: "Evil")
+      = @date(field: "birth_date", label: "Birth Date", format: "yyyy-mm-dd")
+      = @select(field: "occupation_id", label: "Occupation", collection: @occupations)
   .modal-footer
     %input{type: "submit", value: "Save", class: "btn btn-primary"}

@@ -1,4 +1,4 @@
-class Backtastic.Views.SelectFieldView extends Backtastic.Views.FormFieldView
+class Backtastic.Views.SelectView extends Backtastic.Views.FormFieldView
   
   template: JST["templates/select_field_template"]
     
@@ -8,4 +8,3 @@ class Backtastic.Views.SelectFieldView extends Backtastic.Views.FormFieldView
     
   updateModel: ->
     @model.set @field, @$("select").val()
-  
