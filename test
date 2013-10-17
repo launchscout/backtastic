@@ -1,0 +1,5 @@
+#!/bin/sh
+cd example
+bundle exec rspec
+bundle exec rake db:create db:schema:load backtastic:validations:build
+bundle exec guard-jasmine
