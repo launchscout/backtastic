@@ -5,8 +5,8 @@ require "backtastic/version"
 Gem::Specification.new do |s|
   s.name        = "backtastic"
   s.version     = Backtastic::VERSION
-  s.authors     = ["Chris Nelson"]
-  s.email       = ["superchrisnelson@gmail.com"]
+  s.authors     = ["Chris Nelson, Michael Noack"]
+  s.email       = ["superchrisnelson@gmail.com, michael@noack.com.au"]
   s.homepage    = ""
   s.summary     = %q{Formtastic meets backbone.. ish.}
   s.description = %q{Create backbone twitter bootstrap form views easily using helpers. Handle and display
