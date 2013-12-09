@@ -10,7 +10,7 @@ describe "select field view", ->
       first_name: "bob"
       occupation_id: "2"
     @occupations = new Example.Collections.OccupationsCollection [{id: 1, name: "Fireman"}, {id: 2, name: "Ragpicker"}]
-    @selectFieldView = new Backtastic.Views.SelectFieldView
+    @selectFieldView = new Backtastic.Views.SelectView
       model: @person
       field: "occupation_id"
       label: "Occupation"
