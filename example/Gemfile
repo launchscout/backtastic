@@ -18,22 +18,21 @@ group :assets do
 
   gem "haml_coffee_assets"
   gem "jasmine-ajax"
-  gem "jasminerice-runner"
   gem "backtastic", :path => ".."
   gem 'uglifier', '>= 1.0.3'
 end
 
 group :development, :test do
   gem "pry"
+  gem "jasminerice"
 end
 
 gem 'jquery-rails'
-gem "jasminerice"
-gem "capybara-webkit"
 
 group :test do
   gem "rspec-rails"
   gem "rspec-given"
+  gem "guard-jasmine"
 end
 
 gem "inherited_resources"

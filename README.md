@@ -1,6 +1,12 @@
 Backtastic
 ==========
 
+[![Gem Version](https://badge.fury.io/rb/backtastic.png)](http://badge.fury.io/rb/backtastic)
+[![Build Status](https://travis-ci.org/gaslight/backtastic.png?branch=master)](https://travis-ci.org/gaslight/backtastic)
+[![Coverage Status](https://coveralls.io/repos/gaslight/backtastic/badge.png)](https://coveralls.io/r/gaslight/backtastic)
+[![Dependency Status](https://gemnasium.com/gaslight/backtastic.png)](https://gemnasium.com/gaslight/backtastic)
+[![Code Climate](https://codeclimate.com/github/gaslight/backtastic.png)](https://codeclimate.com/github/gaslight/backtastic)
+
 Think formtastic meets backbone with some twitter bootstrap goodness.
 
 At Gaslight we've built several rails apps with backbone and one of the more common complaints from new developers to this stuff is the lack of form helpery goodness that rails gives you.  This is our attempt to start filling this gap.  Most of the action right now happens in `Backtastic.Views.FormView`.  This view is designed to be as a superclass within your application and give you several bits of goodness:
